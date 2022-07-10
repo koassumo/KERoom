@@ -32,11 +32,6 @@ class MainFragment : Fragment() {
 
 
         Thread {
-//            val mDb = Room.databaseBuilder(
-//                requireContext().applicationContext,
-//                EmployeeDb::class.java,
-//                "database"
-//            ).build()
             println("_____________db")
             //val db: EmployeeDb = EmployeeDb.get(requireContext())
             val employee1 = Employee(0, "Employee1", 1000)
@@ -53,6 +48,7 @@ class MainFragment : Fragment() {
             listEmployee.forEach {
                 println("_______________$it")
             }
+
         }.start()
     }
 }
