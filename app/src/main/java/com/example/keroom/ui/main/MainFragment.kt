@@ -32,31 +32,27 @@ class MainFragment : Fragment() {
 
 
         Thread {
-            val mDb = Room.databaseBuilder(
-                requireContext().applicationContext,
-                EmployeeDb::class.java,
-                "database"
-            ).build()
+//            val mDb = Room.databaseBuilder(
+//                requireContext().applicationContext,
+//                EmployeeDb::class.java,
+//                "database"
+//            ).build()
             println("_____________db")
             //val db: EmployeeDb = EmployeeDb.get(requireContext())
             val employee1 = Employee(0, "Employee1", 1000)
-            mDb.employeeDao().insert(employee1)
+            //mDb.employeeDao().insert(employee1)
+            EmployeeDb.get(requireContext()).employeeDao().insert(employee1)
             println("_______________1")
-            //EmployeeDb.get(requireContext()).employeeDao().insert(employee1)
-            val employee2 = Employee(1, "Employee2", 2000)
-            mDb.employeeDao().insert(employee2)
+            val employee2 = Employee(0, "Employee2", 2000)
+            //mDb.employeeDao().insert(employee2)
+            EmployeeDb.get(requireContext()).employeeDao().insert(employee2)
             println("_______________2")
-            //EmployeeDb.get(requireContext()).employeeDao().insert(employee2)
-            //val listEmployee: List<Employee> = EmployeeDb.get(requireContext()).employeeDao().getAll()
-            val listEmployee: List<Employee> = mDb.employeeDao().getAll()
+            //val listEmployee: List<Employee> = mDb.employeeDao().getAll()
+            val listEmployee: List<Employee> = EmployeeDb.get(requireContext()).employeeDao().getAll()
 
             listEmployee.forEach {
                 println("_______________$it")
             }
         }.start()
-
-
     }
-
-
 }
