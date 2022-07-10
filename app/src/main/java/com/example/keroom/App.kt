@@ -4,7 +4,7 @@ import android.app.Application
 
 
 class App : Application() {
-//    var instance: App
+    var instance: App? = null
 //
 //    private var database: Database? = null
 //

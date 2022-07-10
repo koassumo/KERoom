@@ -4,12 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-public class Employee (
-
+data class Employee (
     @PrimaryKey
-    val id: Long,
-
+    val id: Int,
     val name: String,
-
     val salary: Int,
 )

@@ -10,16 +10,16 @@ import com.example.keroom.entity.Employee
 abstract class EmployeeDb : RoomDatabase() {
     abstract fun employeeDao(): EmployeeDao
 
-    companion object {
-        private var instance: EmployeeDb? = null
+//    companion object {
+//        private var instance: EmployeeDb? = null
 
-        @Synchronized
-        fun get(context: Context): EmployeeDb {
-            if (instance == null) {
-                instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    EmployeeDb::class.java, "database"
-                ).build()
+//        @Synchronized
+//        fun get(context: Context): EmployeeDb {
+//            if (instance == null) {
+//                instance = Room.databaseBuilder(
+//                    context.applicationContext,
+//                    EmployeeDb::class.java, "database"
+//                ).build()
 
 //                instance = Room.databaseBuilder(context.applicationContext,
 //                    EmployeeDb::class.java, "CheeseDatabase")
@@ -29,9 +29,9 @@ abstract class EmployeeDb : RoomDatabase() {
 //                        }
 //                    }).build()
 
-            }
-            return instance!!
-        }
+//            }
+//            return instance!!
+//        }
 
 //        fun fillInDb(context: Context) {
 //                val employee: Employee = Employee(0, "Employee", 1000)
@@ -52,5 +52,5 @@ abstract class EmployeeDb : RoomDatabase() {
 //            }
 //        }
 
-    }
+//    }
 }

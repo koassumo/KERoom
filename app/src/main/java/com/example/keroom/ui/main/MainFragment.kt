@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.room.Room
 import com.example.keroom.R
 import com.example.keroom.database.EmployeeDb
 import com.example.keroom.entity.Employee
@@ -29,16 +30,31 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        //val db: EmployeeDb = EmployeeDb.get(requireContext())
-        val employee1 = Employee(0, "Employee1", 1000)
-        EmployeeDb.get(requireContext()).employeeDao().insert(employee1)
-        val employee2 = Employee(0, "Employee2", 2000)
-        EmployeeDb.get(requireContext()).employeeDao().insert(employee2)
-        val listEmployee: List<Employee> = EmployeeDb.get(requireContext()).employeeDao().getAll()
 
-//        listEmployee.forEach {
-//            println(it)
-//        }
+        Thread {
+            val mDb = Room.databaseBuilder(
+                requireContext().applicationContext,
+                EmployeeDb::class.java,
+                "database"
+            ).build()
+            println("_____________db")
+            //val db: EmployeeDb = EmployeeDb.get(requireContext())
+            val employee1 = Employee(0, "Employee1", 1000)
+            mDb.employeeDao().insert(employee1)
+            println("_______________1")
+            //EmployeeDb.get(requireContext()).employeeDao().insert(employee1)
+            val employee2 = Employee(1, "Employee2", 2000)
+            mDb.employeeDao().insert(employee2)
+            println("_______________2")
+            //EmployeeDb.get(requireContext()).employeeDao().insert(employee2)
+            //val listEmployee: List<Employee> = EmployeeDb.get(requireContext()).employeeDao().getAll()
+            val listEmployee: List<Employee> = mDb.employeeDao().getAll()
+
+            listEmployee.forEach {
+                println("_______________$it")
+            }
+        }.start()
+
 
     }
 

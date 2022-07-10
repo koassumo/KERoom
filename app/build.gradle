@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    //apply plugin: 'kotlin-kapt'
 }
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdk 32
@@ -32,7 +32,9 @@ android {
         jvmTarget = '1.8'
     }
 
+
 }
+
 
 dependencies {
 
@@ -54,6 +56,14 @@ dependencies {
     //val roomVersion = "2.4.2"
 
     implementation 'androidx.room:room-runtime:2.4.2'
-    annotationProcessor 'androidx.room:room-compiler:2.4.2'
+    kapt 'androidx.room:room-compiler:2.4.2'
 
+//    // To use Kotlin annotation processing tool (kapt)
+//    kapt'androidx.room:room-compiler:2.4.2'
+//    // To use Kotlin Symbolic Processing (KSP)
+//    ksp'androidx.room:room-compiler:2.4.2'
+
+//    kapt deps.room.compiler
+//    implementation deps.room.runtime
+//    implementation deps.room.paging
 }
